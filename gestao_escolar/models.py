@@ -30,7 +30,7 @@ class Aluno(models.Model):
     nome = models.CharField(max_length=50)
     CPF = models.CharField(max_length=11)
     data_de_nascimento = models.DateField()
-
+    telefone = models.PhoneNumberField()
    
 
     def __str__(self):
