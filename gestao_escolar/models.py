@@ -50,7 +50,8 @@ class Turma(models.Model):
 class Disciplina(models.Model):
     nome = models.CharField(max_length=50)
     carga_horaria = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Carga Horária')
-    ementa = models.CharField(max_length=2000)
+    ementa = models.TextField()
+    programacao = models.TextField()
    
 
     def __str__(self):
@@ -59,7 +60,7 @@ class Disciplina(models.Model):
 
 class Curso(models.Model):
     nome = models.CharField(max_length=50)  
-    ementa = models.CharField(max_length=2000)  
+    ementa = models.TextField()  
     carga_horaria = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Carga Horária') 
     coordenador = models.CharField(max_length=50)  
     email = models.EmailField(max_length=50)  
