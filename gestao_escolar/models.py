@@ -1,4 +1,5 @@
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 class Matricula(models.Model):
     nome = models.CharField(max_length=50)
@@ -30,7 +31,8 @@ class Aluno(models.Model):
     nome = models.CharField(max_length=50)
     CPF = models.CharField(max_length=11)
     data_de_nascimento = models.DateField()
-    telefone = models.PhoneNumberField()
+    telefone = PhoneNumberField()
+    email = models.CharField(max_length=50)
    
 
     def __str__(self):
