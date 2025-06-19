@@ -49,6 +49,7 @@ class Turma(models.Model):
 
 class Disciplina(models.Model):
     nome = models.CharField(max_length=50)
+    carga_horaria = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Carga Horária')
    
 
     def __str__(self):
