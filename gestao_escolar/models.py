@@ -7,8 +7,8 @@ class Matricula(models.Model):
     modalidade_de_ensino = models.CharField(max_length=50)
     data_de_matricula = models.DateField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES)
-    
-   
+    nota_final = models.DecimalField(max_digits=5, decimal_places=2, validators=[MinValueValidator(0.0), MaxValueValidator(10.0)])
+    observacoes = models.TextField(verbose_name='Observações')
 
     def __str__(self):
         return self
@@ -31,14 +31,14 @@ class Aluno(models.Model):
     telefone = PhoneNumberField()
     email = models.CharField(max_length=50)
    
-
     def __str__(self):
         return self.nome
 
 
 class Turma(models.Model):
     email_da_turma = models.CharField(max_length=50)
-
+    data_inicial = models.DateField()
+    data_final = models.DateField()
 
     def __str__(self):
         return self.nome
@@ -51,7 +51,6 @@ class Disciplina(models.Model):
     programacao = models.TextField(verbose_name='Programação')
     avaliacao = models.DecimalField(max_digits=4, decimal_places=2, validators=[MinValueValidator(0.0), MaxValueValidator(10.0)], verbose_name='Avaliação')
    
-
     def __str__(self):
         return self.nome
 
