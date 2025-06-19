@@ -1,5 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Matricula(models.Model):
     nome = models.CharField(max_length=50)
@@ -52,6 +53,7 @@ class Disciplina(models.Model):
     carga_horaria = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Carga Horária')
     ementa = models.TextField()
     programacao = models.TextField(verbose_name='Programação')
+    avaliacao = models.DecimalField(max_digits=4, decimal_places=2, validators=[MinValueValidator(0.0), MaxValueValidator(10.0)], verbose_name='Avaliação')
    
 
     def __str__(self):
