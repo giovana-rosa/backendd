@@ -3,11 +3,15 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 class Matricula(models.Model):
-    nome = models.CharField(max_length=50)
+    STATUS_CHOICES = [('ativa', 'Ativa'), ('trancada', 'Trancada'), ('cancelada', 'Cancelada'), ('concluida', 'Concluída')]
+    modalidade_de_ensino = models.CharField(max_length=50)
+    data_de_matricula = models.DateField()
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    
    
 
     def __str__(self):
-        return self.nome
+        return self
 
 class Professor(models.Model):
     nome = models.CharField(max_length=50)
@@ -53,7 +57,7 @@ class Disciplina(models.Model):
 
 class Frequencia(models.Model):
     data = models.DateField()
-    presenca = models.BooleanField()
+    presenca = models.BooleanField(verbose_name='Presença')
 
     def __str__(self):
         status = "Presente" if self.presenca else "Faltou"
