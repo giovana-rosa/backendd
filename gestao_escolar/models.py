@@ -20,14 +20,6 @@ class Professor(models.Model):
         return self.nome
 
 
-class Frequencia(models.Model):
-    nome = models.CharField(max_length=50)
-   
-
-    def __str__(self):
-        return self.nome
-
-
 class Aluno(models.Model):
     nome = models.CharField(max_length=50)
     CPF = models.CharField(max_length=11)
@@ -59,6 +51,13 @@ class Disciplina(models.Model):
     def __str__(self):
         return self.nome
 
+class Frequencia(models.Model):
+    data = models.DateField()
+    presenca = models.BooleanField()
+
+    def __str__(self):
+        status = "Presente" if self.presenca else "Faltou"
+        return f"{status} em {self.data}"
 
 class Curso(models.Model):
     nome = models.CharField(max_length=50)  
