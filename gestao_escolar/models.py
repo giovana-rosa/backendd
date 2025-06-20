@@ -57,8 +57,9 @@ class Disciplina(models.Model):
     programacao = models.TextField(verbose_name='Programação')
     avaliacao = models.DecimalField(max_digits=4, decimal_places=2, validators=[MinValueValidator(0.0), MaxValueValidator(10.0)], verbose_name='Avaliação')
     curso = models.ForeignKey('Curso', on_delete=models.PROTECT)
-    coordenador = models.ForeignKey('Professor', on_delete=models.PROTECT)
-    professor = models.ForeignKey('Professor', on_delete=models.PROTECT, related_name='disciplinas')
+    coordenador = models.ForeignKey('Professor', on_delete=models.PROTECT, related_name='disciplinas_coordenadas')
+    professor = models.ForeignKey('Professor', on_delete=models.PROTECT, null=True, blank=True, related_name='disciplinas_ministradas')
+
 
     def __str__(self):
         return self.nome
