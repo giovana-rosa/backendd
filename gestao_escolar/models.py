@@ -60,7 +60,6 @@ class Disciplina(models.Model):
     coordenador = models.ForeignKey('Professor', on_delete=models.PROTECT, related_name='disciplinas_coordenadas')
     professor = models.ForeignKey('Professor', on_delete=models.PROTECT, null=True, blank=True, related_name='disciplinas_ministradas')
 
-
     def __str__(self):
         return self.nome
 

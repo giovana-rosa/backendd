@@ -14,9 +14,28 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from rest_framework.routers import DefaultRouter
+from gestao_escolar.views import MatriculaViewSet
+from gestao_escolar.views import ProfessorViewSet
+from gestao_escolar.views import AlunoViewSet
+from gestao_escolar.views import TurmaViewSet
+from gestao_escolar.views import CursoViewSet
+from gestao_escolar.views import FrequenciaViewSet
+from gestao_escolar.views import DisciplinaViewSet
+
+router = DefaultRouter()
+router.register(r'matriculas', MatriculaViewSet)
+router.register(r'professores', ProfessorViewSet)
+router.register(r'alunos', AlunoViewSet)
+router.register(r'turmas', TurmaViewSet)
+router.register(r'cursos', CursoViewSet)
+router.register(r'frequencias', FrequenciaViewSet)
+router.register(r'disciplinas', DisciplinaViewSet)
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('admin/', admin.site.urls),
 ]
